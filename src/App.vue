@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>UK Energy sources</h1>
-		<energy-graph :energy_data="energy_mix"></energy-graph>
+		<energy-graph :energy_data="generationMix"></energy-graph>
 	</div>
 </template>
 
@@ -11,26 +11,21 @@ import EnergyGraph from './components/EnergyGraph';
 export default {
 	data() {
 		return {
-			energy_mix: [],
-			graph_mix: []
+			generationMix: []
 		};
 	},
-	// computed: {
-	// 	convertData() {
-	// 		console.log(this.energy_mix);
-	// 	}
-	// },
 	mounted() {
 		fetch('https://api.carbonintensity.org.uk/generation')
 			.then(res => res.json())
-			// .then(json =>
-			// 	json.data.generationmix.forEach(d => this.energy_mix.push(d))
-			.then(data => this.convertData(data));
+			.then(json => this.convertData(json));
 	},
 	methods: {
-		convertData: function(data) {
-			console.log(data.data.generationmix);
-			data.forEach(data => this.energy_mix.push(data.data.generationmix.fuel));
+		convertData: function(json) {
+			console.log(json.data.generationmix);
+			this.generationMix.push(['Fuel', 'Percentage']);
+			json.data.generationmix.forEach(d =>
+				this.generationMix.push([d.fuel, d.perc])
+			);
 		}
 	},
 	components: {
