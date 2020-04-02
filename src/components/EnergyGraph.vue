@@ -1,9 +1,9 @@
 <template>
-	<div>
-		<p v-for="mix in energy_data" v-bind:key="mix">
-			{{ mix }}
-		</p>
-	</div>
+	<g-chart
+		type="PieChart"
+		:options="chartOptions"
+		:data="this.energy_data"
+	></g-chart>
 </template>
 
 <script>
@@ -11,9 +11,16 @@ import { GChart } from 'vue-google-charts';
 
 export default {
 	name: 'energy-graph',
+	data() {
+		return {
+			chartOptions: {
+				is3D: true
+			}
+		};
+	},
 	props: ['energy_data'],
 	components: {
-		GChart
+		'g-chart': GChart
 	}
 };
 </script>

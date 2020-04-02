@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1>UK Energy sources</h1>
-		<energy-graph :energy_data="generationMix"></energy-graph>
+		<energy-graph id="pie-chart" :energy_data="generationMix"></energy-graph>
 	</div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
 	},
 	methods: {
 		convertData: function(json) {
-			console.log(json.data.generationmix);
+			// console.log(json.data.generationmix);
 			this.generationMix.push(['Fuel', 'Percentage']);
 			json.data.generationmix.forEach(d =>
 				this.generationMix.push([d.fuel, d.perc])
@@ -34,4 +34,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#pie-chart {
+	height: 30em;
+	width: max;
+}
+</style>
