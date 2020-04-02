@@ -54,7 +54,7 @@ export default {
 <style scoped>
 body {
 	font-family: 'Trebuchet MS', sans-serif;
-	background-color: #ffe4c4;
+	background-color: #eeeeee;
 	background-size: cover;
 	text-align: center;
 }

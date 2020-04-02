@@ -15,7 +15,7 @@ export default {
 		return {
 			chartOptions: {
 				is3D: true,
-				backgroundColor: '#ffe4c4'
+				backgroundColor: '#eeeeee'
 			}
 		};
 	},
