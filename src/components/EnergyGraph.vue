@@ -14,10 +14,12 @@ export default {
 	data() {
 		return {
 			chartOptions: {
-				is3D: true
+				is3D: true,
+				backgroundColor: '#ffe4c4'
 			}
 		};
 	},
+
 	props: ['energy_data'],
 	components: {
 		'g-chart': GChart
